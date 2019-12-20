@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute'
 import './App.css';
 import LoginForm from './login/LoginForm';
+import  Header  from './components/Header';
 
 function App() {
   return (
     <>
+    <Header />
     <LoginForm />
     </>
     // <Router>
