@@ -1,5 +1,5 @@
 import React from 'react'
-import axiosWithAuth from '../components/axiosWithAuth'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Form } from 'semantic-ui-react'
 import { userLogin } from '../actions'
@@ -14,23 +14,19 @@ const LoginForm = props => {
 
     const userLogin = e => {
         e.preventDefault()
-        console.log(username, password)
-        axiosWithAuth()
-        .post('/login', {
+        localStorage.setItem('type', type.value)
+        props.userLogin({
             username,
             password,
             type: type.value
         })
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err.message)
-        })
+        setType('')
+        setUsername('')
+        setPassword('')
     }
     return(
         <FormContainer>
-            <Form>
+            <Form inverted>
                     <Form.Select 
                     required
                     name='type'
@@ -56,7 +52,10 @@ const LoginForm = props => {
                     name='password'
                     onChange={e => handlePassword(e.target.value)}  
                     />
-                    <Form.Button onClick={userLogin}>Submit</Form.Button>
+                     <Form.Group inline>
+                        <Form.Button onClick={userLogin}>Submit</Form.Button>
+                        <Link className='login-link' to='/register'>Register</Link>
+                    </Form.Group>
             </Form>
         </FormContainer>
     )
@@ -70,5 +69,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
- {}
+ {userLogin}
 )(LoginForm)

@@ -1,5 +1,5 @@
 import React from 'react'
-import axiosWithAuth from '../components/axiosWithAuth'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { userRegister } from '../actions'
 import { FormContainer } from '../styled-components'
@@ -15,6 +15,7 @@ const SignupForm = props => {
     const [password, setPassword, handlePassword] = useInput('')
 
     const userRegister = e => {
+        localStorage.setItem('type', type.value)
         e.preventDefault()
         console.log(            
             username,
@@ -36,10 +37,9 @@ const SignupForm = props => {
             setUsername('')
             setPassword('')
     }
-
     return(
         <FormContainer>
-            <Form>
+            <Form inverted>
                     <Form.Select 
                     required
                     name='type'
@@ -81,7 +81,10 @@ const SignupForm = props => {
                     name='current'
                     onChange={e => handleCurrent(e.target.value)}  
                     />
-                    <Form.Button onClick={userRegister}>Submit</Form.Button>
+                    <Form.Group inline>
+                        <Form.Button onClick={userRegister}>Submit</Form.Button>
+                        <Link className='login-link' to='/login'>Login</Link>
+                    </Form.Group>
             </Form>
         </FormContainer>
     )
