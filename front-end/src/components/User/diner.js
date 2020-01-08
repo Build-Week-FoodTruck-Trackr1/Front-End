@@ -3,7 +3,8 @@ import axios from "axios";
 import style from "styled-components";
 
 const diner = () => {
-    const [ truck, setTruck] = useState ({});
+    const [ truck, setTruck] = useState ({})
+    const [ search, setSearch] = useState("")
 useEffect( ()=>{
     axios.get ();
     .then(response => {
@@ -14,9 +15,27 @@ useEffect( ()=>{
         console.log("Sorry, you've got an error", error)
     })
 }, []);
-
+const handleChange= event =>{
+    setSearch(event.target.value)
+    console.log(event)
+}
+const handleSubmit= event =>{
+    event.preventDefault()
+    axios.get()
+        .then(res => {
+            console.log(res.data.message);
+            setTruck(res.data.message)
+        })
+    
+}
 return(
     <div className = "foodtruck">
+        <form onSubmit={handelSubmit}></form>
+        <input
+        placeholder="search"
+        name= "name"
+        onChange= {handleChange}
+        />
         {trucks.map(food_truck, index) => {
             (
                 <FoodTruckCard

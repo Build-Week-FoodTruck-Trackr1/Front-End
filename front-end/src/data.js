@@ -1,4 +1,4 @@
-Truck: { id: 1
+{ id: 1
     name: "Amigos Locos"
     cusine: "American-mexican"
     customer_ratings_Av: 4
