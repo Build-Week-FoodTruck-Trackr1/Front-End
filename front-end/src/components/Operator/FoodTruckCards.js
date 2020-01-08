@@ -1,19 +1,19 @@
 import React from "react";
 
-
-export default function FoodTruck(props) {
+const FoodTruck = props => {
   return (
-    <div>
-      <div>
-        <h1>{props.e.name}</h1>
-        <img src={props.e.image} />
-        <div> food type: {props.e.type}</div>
-        <div> {props.e.rating}</div>
-        <div>Average Rating: {props.e.average}</div>
-        <button> More Info </button>
-      </div>
+    <div className="truck-list">
+      {props.trucks.map(truck => (
+        <div key={truck.id}>
+          <h2>{truck.title}</h2>
+          <p>{truck.cuisineType}</p>
+          <p>{truck.menuitems}</p>
+        </div>
+      ))}
     </div>
   );
-}
+};
+
+export default FoodTruck;
 
 
