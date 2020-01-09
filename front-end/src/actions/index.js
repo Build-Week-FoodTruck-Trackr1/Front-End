@@ -18,7 +18,7 @@ export const userRegister = (user) => dispath => {
     console.log(user)
 
     axiosWithAuth()
-        .post('api/register', {
+        .post('/api/register', {
             type: user.type,
             username: user.username,
             password: user.password,
@@ -45,7 +45,7 @@ export const userLogin = (user) => dispath => {
     console.log(user.type)
 
     axiosWithAuth()
-        .post('api/login', {
+        .post('/api/login', {
             type: user.type,
             username: user.username,
             password: user.password,
