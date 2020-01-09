@@ -39,7 +39,7 @@ const SignupForm = props => {
     }
     return(
         <FormContainer>
-            <Form inverted>
+            <Form size='massive' inverted>
                     <Form.Select 
                     required
                     name='type'
@@ -82,7 +82,7 @@ const SignupForm = props => {
                     onChange={e => handleCurrent(e.target.value)}  
                     />
                     <Form.Group inline>
-                        <Form.Button onClick={userRegister}>Submit</Form.Button>
+                        <Form.Button size='massive' onClick={userRegister}>Submit</Form.Button>
                         <Link className='login-link' to='/login'>Login</Link>
                     </Form.Group>
             </Form>

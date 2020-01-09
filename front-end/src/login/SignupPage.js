@@ -1,12 +1,16 @@
 import React from 'react'
 import { MainPageContainer } from '../styled-components'
 import SignupForm from './SignupForm'
+import Header from '../components/headers/Header'
 
 const SignupPage = () => {
     return(
-        <MainPageContainer>
-            <SignupForm />
-        </MainPageContainer>
+        <>
+            <Header />
+            <MainPageContainer>
+                <SignupForm />
+            </MainPageContainer>
+        </>
     )
 }
 

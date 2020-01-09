@@ -2,12 +2,11 @@ import styled from "styled-components";
 import axiosWithAuth from "../axiosWithAuth";
 import React, { useEffect, useState } from "react";
 import TruckCard from "./TruckCard"
+import OperatorHeader from '../headers/OperatorHeader'
 
 
 const Body = styled.div`
 background: #ECA564;
-margin: 0;
-padding: 0px;
 `;
 
 const MyH2 = styled.h2`
@@ -16,9 +15,9 @@ font-family: 'Droid serif', serif;
 font-size: 36px; 
 font-weight: 400; 
 font-style: italic; 
-line-height: 44px; 
-margin: 0 0 12px; 
+line-height: 44px;  
 text-align: center;
+margin: 0 0 12px;
 
 `;
 const MyH3 = styled.h3`
@@ -28,9 +27,8 @@ font-size: 36px;
 font-weight: 400; 
 font-style: italic; 
 line-height: 44px; 
-margin: 0 0 12px; 
 text-align: center;
-
+margin 0 0 12px;
 `;
 
 const OperatorDashboard = () => {
@@ -48,19 +46,22 @@ const OperatorDashboard = () => {
   }, []);
 
   return (
-    <Body>
-      <MyH2>Operator Dashboard</MyH2>
+    <>
+      <OperatorHeader />
+      <Body>
+        <MyH2>Operator Dashboard</MyH2>
 
 
-      <MyH3> Your Trucks: </MyH3>
-   
-      {trucks.map(truck => { 
-        return <TruckCard key={truck.id} truck={truck}/>})}
-        
+        <MyH3> Your Trucks: </MyH3>
+    
+        {trucks.map(truck => { 
+          return <TruckCard key={truck.id} truck={truck}/>})}
+          
 
 
 
-    </Body>
+      </Body>
+    </>
   );
       }
 
