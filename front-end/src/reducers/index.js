@@ -59,7 +59,6 @@ export const reducer = (state = intitialState, action) => {
             return{
                 ...state,
                 operator: {
-                    ...operator,
                     trucks: action.payload
                 }
             }
@@ -67,7 +66,6 @@ export const reducer = (state = intitialState, action) => {
             return{
                 ...state,
                 operator: {
-                    ...operator,
                     message: action.payload
                 }
             }
