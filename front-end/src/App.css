@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.login-link {
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: underline;
+  font-family: Helvetica, sans-serif;
+  font-weight: 200;
+}
+
+.login-link:hover {
+  color: #F7CE74;
+  text-decoration: underline;
+}
