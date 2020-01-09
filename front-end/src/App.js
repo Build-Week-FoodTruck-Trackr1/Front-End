@@ -5,10 +5,7 @@ import PrivateRoute from './components/PrivateRoute'
 import './App.css';
 import FoodTruckForm from './components/Operator/FoodTruckForm';
 import OperatorDashboard from './components/Operator/OperatorDashboard'
-
-import LoginForm from './login/LoginForm'
-import SignupForm from './login/SignupForm'
-import Header from './components/Header'
+import Header from './components/headers/Header'
 import SignupPage from './login/SignupPage'
 import LoginPage from './login/LoginPage'
 
@@ -16,21 +13,16 @@ function App() {
   return (
 
     <>
-
-    
-   
-   
-
-    <Router history={history}>
-      <Header />
-      <Switch>
-        <PrivateRoute exact path='/diner/dashboard' component={Header} />
-        <PrivateRoute exact path='/operator/dashboard' component={OperatorDashboard} />
-        <Route exact path='/login' component={LoginPage} />
-        <Route exact path='/register' component={SignupPage} />
-        <Route component={LoginPage} />
-      </Switch>
-    </Router>
+      <Router history={history}>
+        <Switch>
+          <PrivateRoute exact path='/diner/dashboard' component={Header} />
+          <PrivateRoute exact path='/operator/dashboard' component={OperatorDashboard} />
+          <PrivateRoute exact path='/operator/add-trucks' component={FoodTruckForm} />
+          <Route exact path='/login' component={LoginPage} />
+          <Route exact path='/register' component={SignupPage} />
+          <Route component={LoginPage} />
+        </Switch>
+      </Router>
     </>
 
   );

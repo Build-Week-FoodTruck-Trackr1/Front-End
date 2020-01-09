@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux'
 import styled from "styled-components";
 import { addTruck } from '../../actions'
+import OperatorHeader from '../headers/OperatorHeader'
 
 
 const FormContainer = styled.div`
@@ -44,6 +45,8 @@ const FoodTruckForm = props => {
     setTruck({ truckname: "", cuisineType: "", menuitems: "" });
   };
   return (
+    <>
+    <OperatorHeader />
     <FormContainer>
       <form onSubmit={submitForm}>
         <label htmlFor="truckname">Food Truck Name</label>
@@ -75,6 +78,7 @@ const FoodTruckForm = props => {
         <button type="submit">Add Food Truck</button>
       </form>
     </FormContainer>
+    </>
   );
 };
 

@@ -26,7 +26,7 @@ const LoginForm = props => {
     }
     return(
         <FormContainer>
-            <Form inverted>
+            <Form size='massive' inverted>
                     <Form.Select 
                     required
                     name='type'
@@ -53,7 +53,7 @@ const LoginForm = props => {
                     onChange={e => handlePassword(e.target.value)}  
                     />
                      <Form.Group inline>
-                        <Form.Button onClick={userLogin}>Submit</Form.Button>
+                        <Form.Button size='massive' onClick={userLogin}>Submit</Form.Button>
                         <Link className='login-link' to='/register'>Register</Link>
                     </Form.Group>
             </Form>
