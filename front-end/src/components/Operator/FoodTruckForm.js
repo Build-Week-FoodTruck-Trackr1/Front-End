@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { connect } from 'react-redux'
 import styled from "styled-components";
-import axiosWithAuth from "../axiosWithAuth";
+import { addTruck } from '../../actions'
+
 
 const FormContainer = styled.div`
   width: 460px;
@@ -24,33 +26,23 @@ const TextArea = styled.textarea`
   display: block;
 `;
 
-const FoodTruckForm = () => {
+
+const FoodTruckForm = props => {
   const [truck, setTruck] = useState({
     truckname: "",
     cuisineType: "",
     menuitems: ""
   });
-
-  //   useEffect( ()=>{
-  // axiosWithAuth().get ("/trucks/owned")
-  // .then(response =>{
-  //   const foodTruck = response.data;
-  //   setTruck(truck)
-  // })
-  // .catch(error => {
-  // ?
-
+  
   const handleChanges = event => {
     setTruck({ ...truck, [event.target.name]: event.target.value });
   };
 
   const submitForm = event => {
     event.preventDefault();
-
+    props.add(truck)
     setTruck({ truckname: "", cuisineType: "", menuitems: "" });
   };
-
-  console.log("truck state", truck);
   return (
     <FormContainer>
       <form onSubmit={submitForm}>
@@ -86,4 +78,13 @@ const FoodTruckForm = () => {
   );
 };
 
-export default FoodTruckForm;
+const mapStateToProps = state => {
+  return {
+      operator: state.operator
+  }
+}
+
+export default connect(
+  mapStateToProps,
+{addTruck}
+)(FoodTruckForm)

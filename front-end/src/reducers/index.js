@@ -1,4 +1,11 @@
-import { USER_REGISTER_START, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_LOGIN_START, USER_LOGIN_SUCCESS} from '../actions'
+import { USER_REGISTER_START, 
+        USER_REGISTER_SUCCESS, 
+        USER_REGISTER_FAIL, 
+        USER_LOGIN_START, 
+        USER_LOGIN_SUCCESS,
+        OPERATOR_ADD_TRUCKS_SUCCESS,
+        OPERATOR_ADD_TRUCKS_FAIL
+    } from '../actions'
 
 export const intitialState = {
     diner: {}, 
@@ -40,13 +47,29 @@ export const reducer = (state = intitialState, action) => {
             {
                 ...state,
                 diner: {
-                    ...action.payload.newUser,
+                    ...action.payload,
                     message: action.payload.message
                 }
             } :
             {
                 ...state,
                 operator: action.payload
+            }
+        case OPERATOR_ADD_TRUCKS_SUCCESS:
+            return{
+                ...state,
+                operator: {
+                    ...operator,
+                    trucks: action.payload
+                }
+            }
+        case OPERATOR_ADD_TRUCKS_FAIL:
+            return{
+                ...state,
+                operator: {
+                    ...operator,
+                    message: action.payload
+                }
             }
         default: 
             return state

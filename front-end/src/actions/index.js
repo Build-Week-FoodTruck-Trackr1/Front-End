@@ -7,6 +7,8 @@ export const USER_REGISTER_FAIL = 'USER_REGISTER_FAIL'
 export const USER_LOGIN_START = 'USER_LOGIN_START'
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAIL = 'USER_LOGIN_FAIL'
+export const OPERATOR_ADD_TRUCKS_SUCCESS = 'OPERATOR_ADD_TRUCKS_SUCCESS'
+export const OPERATOR_ADD_TRUCKS_FAIL = 'OPERATOR_ADD_TRUCKS_FAIL'
 
 export const userRegister = (user) => dispath => {
 
@@ -16,7 +18,7 @@ export const userRegister = (user) => dispath => {
     console.log(user)
 
     axiosWithAuth()
-        .post('/register', {
+        .post('api/register', {
             type: user.type,
             username: user.username,
             password: user.password,
@@ -43,7 +45,7 @@ export const userLogin = (user) => dispath => {
     console.log(user.type)
 
     axiosWithAuth()
-        .post('/login', {
+        .post('api/login', {
             type: user.type,
             username: user.username,
             password: user.password,
@@ -58,4 +60,30 @@ export const userLogin = (user) => dispath => {
             console.log(err.message)
             dispath({type: USER_LOGIN_FAIL, paylod: err.message})
         })
+}
+
+export const addTruck = truck => dispatch => {
+
+    axiosWithAuth()
+    .post('/trucks', {
+        name: truck.truckname,
+        cuisineType: truck.cuisineType,
+        operator_id: 1,
+      })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+
+      axiosWithAuth()
+        .get('/trucks/owned')
+        .then(res => {
+            dispatch({type: OPERATOR_ADD_TRUCKS_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            dispatch({type: OPERATOR_ADD_TRUCKS_FAIL, payload: err.message})
+        })
+        
 }
