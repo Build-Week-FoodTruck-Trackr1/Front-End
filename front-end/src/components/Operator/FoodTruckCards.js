@@ -1,7 +1,11 @@
 import React from "react";
 
 const FoodTruck = props => {
+
+  
   return (
+
+
     <div className="truck-list">
       {props.trucks.map(truck => (
         <div key={truck.id}>
