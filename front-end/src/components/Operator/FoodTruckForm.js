@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import axiosWithAuth from "../axiosWithAuth"
+import axiosWithAuth from "../axiosWithAuth";
 
 const FormContainer = styled.div`
-    width: 460px;
-    background: #ECA564;
-    color: #fff;
-    display:flex;
-    justify-content: center;
-    box-shadow: 0 5px #E68959;
-   
+  width: 460px;
+  background: #eca564;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 5px #e68959;
 `;
 const InputStyle = styled.input`
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color: #6fb03e
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6fb03e;
 `;
 const TextArea = styled.textarea`
   display:flex;
@@ -26,7 +24,6 @@ const TextArea = styled.textarea`
   display: block;
 `;
 
-
 const FoodTruckForm = () => {
   const [truck, setTruck] = useState({
     truckname: "",
@@ -34,31 +31,14 @@ const FoodTruckForm = () => {
     menuitems: ""
   });
 
-//   useEffect( ()=>{
-// axiosWithAuth().get ("/trucks")
-// .then(response =>{
-//   const foodTruck = response.data;
-//   setTruck(truck)
-// })
-// .catch(error => {
-// ?
-
-
-
-  // const addNewTruck = truck => {
-
-  //   const newTruck = {
-  //     id: Date.now(),
-  //     title: truck.title,
-  //     cuisineType: truck.cuisineType,
-  //     menuitems: truck.menuitems
-
-  // //   };
-
-  //   const newTruckCollection = [...truck, newTruck];
-
-  //   setTruck(newTruckCollection);
-  // };
+  //   useEffect( ()=>{
+  // axiosWithAuth().get ("/trucks/owned")
+  // .then(response =>{
+  //   const foodTruck = response.data;
+  //   setTruck(truck)
+  // })
+  // .catch(error => {
+  // ?
 
   const handleChanges = event => {
     setTruck({ ...truck, [event.target.name]: event.target.value });
@@ -70,7 +50,7 @@ const FoodTruckForm = () => {
     setTruck({ truckname: "", cuisineType: "", menuitems: "" });
   };
 
- console.log("truck state", truck)
+  console.log("truck state", truck);
   return (
     <FormContainer>
       <form onSubmit={submitForm}>
