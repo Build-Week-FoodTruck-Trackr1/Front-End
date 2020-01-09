@@ -10,18 +10,19 @@ import  Header  from './components/Header';
 function App() {
   return (
     <>
- 
+
+    
+    <Router>
+      
+      <Switch>
+        <PrivateRoute exact path='/diner/dashboard' component={Header} />
+        <PrivateRoute exact path='/operator/dashboard' component={OperatorDashboard} />
+        <Route exact path='/login' component={LoginForm} />
+        
+        <Route component={LoginForm} />
+      </Switch>
+    </Router>
     </>
-    // <Router>
-    //   <LoginForm/>
-    //   <Switch>
-    //     <PrivateRoute exact path='/diner/dashboard' component={user} />
-    //     <PrivateRoute exact path='/operator/dashboard' component={FoodTruckList} />
-    //     <Route exact path='/login' component={Login} />
-    //     <Route exact path='/login/operator' component={Login} />
-    //     <Route component={Login} />
-    //   </Switch>
-    // </Router>
   );
 }
 
