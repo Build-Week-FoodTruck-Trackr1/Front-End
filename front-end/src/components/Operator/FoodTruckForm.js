@@ -42,9 +42,10 @@ const FoodTruckForm = props => {
 
   const submitForm = event => {
     event.preventDefault();
-    props.addTruck(truck)
+    props.addTruck({...truck, id: props.operator.id})
     setTruck({ truckname: "", cuisineType: "", menuitems: "" });
   };
+
   return (
     <>
     <OperatorHeader />
@@ -85,7 +86,8 @@ const FoodTruckForm = props => {
 
 const mapStateToProps = state => {
   return {
-      operator: state.operator
+      operator: state.operator,
+      isLoading: state.isLoading
   }
 }
 

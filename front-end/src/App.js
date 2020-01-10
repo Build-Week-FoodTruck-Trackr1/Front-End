@@ -8,6 +8,7 @@ import OperatorDashboard from './components/Operator/OperatorDashboard'
 import Header from './components/headers/Header'
 import SignupPage from './login/SignupPage'
 import LoginPage from './login/LoginPage'
+import TestDiner from './components/User/testdiner';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
     <>
       <Router history={history}>
         <Switch>
-          <PrivateRoute exact path='/diner/dashboard' component={Header} />
+          <PrivateRoute exact path='/diner/dashboard' component={TestDiner} />
           <PrivateRoute exact path='/operator/dashboard' component={OperatorDashboard} />
           <PrivateRoute exact path='/operator/add-trucks' component={FoodTruckForm} />
           <Route exact path='/login' component={LoginPage} />

@@ -75,12 +75,13 @@ const SignupForm = props => {
                     />
                     <Form.Input
                     required
-                    label='Current Location'
+                    label='Current City'
                     type='text'
                     value={currentLocation}
                     name='current'
                     onChange={e => handleCurrent(e.target.value)}  
                     />
+                    <p className='error'>{props.error}</p>
                     <Form.Group inline>
                         <Form.Button size='massive' onClick={userRegister}>Submit</Form.Button>
                         <Link className='login-link' to='/login'>Login</Link>
@@ -92,7 +93,8 @@ const SignupForm = props => {
 
 const mapStateToProps = state => {
     return {
-        options: state.options
+        options: state.options,
+        error: state.error
     }
 }
 
