@@ -29,11 +29,10 @@ export const userRegister = (user) => dispath => {
             console.log(res.data)
             dispath({type: USER_REGISTER_SUCCESS, payload: res.data})
             localStorage.setItem('token', res.data.token)
-            userType == 'diner' ? history.push('/diner/dashboard') : history.push('/operator/dashboard')
+            userType === 'diner' ? history.push('/diner/dashboard') : history.push('/operator/dashboard')
         })
         .catch(err => {
-            console.log(err.message)
-            dispath({type: USER_REGISTER_FAIL, paylod: err.message})
+            dispath({type: USER_REGISTER_FAIL, payload: 'All fields must be filled out'})
         })
 }
 
@@ -54,11 +53,10 @@ export const userLogin = (user) => dispath => {
             console.log(res.data)
             dispath({type: USER_LOGIN_SUCCESS, payload: res.data})
             localStorage.setItem('token', res.data.token)
-            userType == 'diner' ? history.push('/diner/dashboard') : history.push('/operator/dashboard')
+            userType === 'diner' ? history.push('/diner/dashboard') : history.push('/operator/dashboard')
         })
         .catch(err => {
-            console.log(err.message)
-            dispath({type: USER_LOGIN_FAIL, paylod: err.message})
+            dispath({type: USER_LOGIN_FAIL, payload: 'Invalid username or password'})
         })
 }
 
@@ -68,7 +66,7 @@ export const addTruck = truck => dispatch => {
     .post('/trucks', {
         name: truck.truckname,
         cuisineType: truck.cuisineType,
-        operator_id: 1,
+        operator_id: truck.id,
       })
       .then(res => {
         console.log(res)
