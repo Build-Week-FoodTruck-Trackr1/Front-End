@@ -1,10 +1,12 @@
 import React from 'react'
-import { HeaderContainer, HeroTitle } from '../../styled-components'
+import { HeaderContainer, Logo, NavLinks } from '../../styled-components'
 
 const Header = () => {
     return(
         <HeaderContainer>
-            <HeroTitle>Food Truck TrackR</HeroTitle>
+            <NavLinks href='https://heuristic-swanson-2ca27f.netlify.com/'>
+                <Logo src='https://github.com/agyin3/images/blob/master/food-truck-trackr/logo.png?raw=true' />
+            </NavLinks>
         </HeaderContainer>
     )
 }

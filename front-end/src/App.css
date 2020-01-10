@@ -54,6 +54,15 @@
   color: #000;
 }
 
+.menu-link {
+  color: #fff;
+}
+
+.menu-link:hover {
+  color: #000;
+  cursor: pointer;
+}
+
 .error{
   font-size: 1.2rem;
   color: red;

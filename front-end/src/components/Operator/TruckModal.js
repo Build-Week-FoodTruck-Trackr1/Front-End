@@ -4,9 +4,9 @@ import { fetchTrucks } from '../../actions'
 import axiosWithAuth from '../axiosWithAuth';
 import { connect } from 'react-redux';
 
-export const FormModal = (props) => {
-
-    const [truck, setTruck] = useState({...props.truck, imageUrl: ''})
+export const TruckModal = (props) => {
+    const truckImgUrl = props.truck.imgUrl;
+    const [truck, setTruck] = useState({...props.truck, imgUrl: truckImgUrl ? truckImgUrl : ''})
     const [open, setOpen] = useState(false)
 
     const handleChanges = e => {
@@ -18,7 +18,6 @@ export const FormModal = (props) => {
     }
 
     const submitEdit = e => {
-        // doesn't work when adding image url
         console.log(truck)
         e.preventDefault()
         axiosWithAuth()
@@ -36,7 +35,14 @@ export const FormModal = (props) => {
     }
 
     return(
-        <Modal size='large' open={open} onClose={close} trigger={<p onClick={() => setOpen(true)}>Edit Truck</p>} closeOnDimmerClick={false} closeIcon>
+        <Modal 
+        size='large' 
+        open={open} 
+        onClose={close}  
+        closeOnDimmerClick={false} 
+        closeIcon
+        trigger={<p className='menu-link' onClick={() => setOpen(true)}>Edit Truck</p>}
+        >
             <Header>Edit Truck</Header>
             <Modal.Content>
             <Form size='massive'>
@@ -52,8 +58,8 @@ export const FormModal = (props) => {
                     required
                     label='Image Url'
                     type='text'
-                    value={truck.imageUrl}
-                    name='imageUrl'
+                    value={truck.imgUrl}
+                    name='imgUrl'
                     onChange={handleChanges}  
                     />
                     <Form.Input
@@ -81,4 +87,4 @@ export const FormModal = (props) => {
 export default connect(
     null,
     {fetchTrucks}
-)(FormModal)
+)(TruckModal)

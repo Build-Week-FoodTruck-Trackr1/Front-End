@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const HeaderContainer = styled.div`
-    height: 10vh;
+    height: 12vh;
     background: #ECA564;
     color: #fff;
     display: flex;
@@ -12,7 +12,7 @@ export const HeaderContainer = styled.div`
 `
 
 export const OperatorHead = styled.div`
-    height: 10vh;
+    height: 12vh;
     background: #ECA564;
     color: #fff;
     display: flex;
@@ -40,6 +40,10 @@ export const NavLinks = styled.a`
     }
 `
 
+export const Logo = styled.img`
+    width: 100px;
+`
+
 export const HeroTitle = styled.h1`
     font-family: 'Nunito Sans', sans-serif;
     font-size: 3.2rem;
@@ -51,6 +55,21 @@ export const FormContainer = styled.div`
     margin: 0 auto;
     padding-top: 5%;
     color: #fff;
+`
+
+export const MenuButton = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background: #232429;
+    width: 20rem;
+    border-radius: 5px;
+
+    &:hover{
+        cursor: pointer;
+    }
 `
 
 export const MainPageContainer = styled.div`

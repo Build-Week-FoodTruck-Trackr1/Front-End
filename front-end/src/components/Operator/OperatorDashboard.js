@@ -10,9 +10,9 @@ import { fetchTrucks } from "../../actions";
 
 
 const Body = styled.div`
-height: 100vh;
+heigth: 100vh;
 background: #ECA564;
-height: 100vh;
+padding: 10px;
 `;
 
 const MyH2 = styled.h2`
@@ -62,41 +62,6 @@ const OperatorDashboard = props => {
     props.fetchTrucks('/trucks/owned');
   }, []);
 
-  if(props.isLoading) {
-    return(
-      <>
-      <OperatorHeader />
-      <Body>
-        <Segment size='massive' color='red' inverted>
-          <Dimmer active>
-            <Loader size='medium' inline='centered' />
-          </Dimmer>
-        </Segment>
-    </Body>
-    </>
-    )
-  }
-
-  // else if(props.operator.trucks.length === 0) {
-  //   return(
-  //     <>
-  //     <OperatorHeader />
-  //     <Body>
-  //       <MyH2>{props.operator.message}</MyH2>
-
-
-  //       <MyH3> Your Trucks: </MyH3>
-    
-  //       <OperatorText>Click <Link id='operator-link' className='login-link' to='/operator/add-trucks'>here</Link> to add your trucks</OperatorText>
-          
-
-
-
-  //     </Body>
-  //   </>
-  //   )
-  // }
-
   
   return (
     <>
@@ -106,6 +71,12 @@ const OperatorDashboard = props => {
 
 
         <MyH3> Your Trucks: </MyH3>
+
+        {!props.operator.trucks && 
+          <OperatorText>
+          Click <Link id='operator-link' className='login-link' to='/operator/add-trucks'>here</Link> to add your trucks
+          </OperatorText> 
+        }
     
         {props.operator.trucks && props.operator.trucks.map(truck => { 
           return <TruckCard key={truck.id} truck={truck}/>
