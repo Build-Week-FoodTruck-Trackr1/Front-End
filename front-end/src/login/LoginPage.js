@@ -3,7 +3,8 @@ import { MainPageContainer } from '../styled-components'
 import LoginForm from './LoginForm'
 import Header from '../components/headers/Header'
 
-const LoginPage = () => {
+const LoginPage = props => {
+    console.log(props.error)
     return(
         <>
             <Header />
