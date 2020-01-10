@@ -77,25 +77,25 @@ const OperatorDashboard = props => {
     )
   }
 
-  else if(props.operator.trucks.length === 0) {
-    return(
-      <>
-      <OperatorHeader />
-      <Body>
-        <MyH2>{props.operator.message}</MyH2>
+  // else if(props.operator.trucks.length === 0) {
+  //   return(
+  //     <>
+  //     <OperatorHeader />
+  //     <Body>
+  //       <MyH2>{props.operator.message}</MyH2>
 
 
-        <MyH3> Your Trucks: </MyH3>
+  //       <MyH3> Your Trucks: </MyH3>
     
-        <OperatorText>Click <Link id='operator-link' className='login-link' to='/operator/add-trucks'>here</Link> to add your trucks</OperatorText>
+  //       <OperatorText>Click <Link id='operator-link' className='login-link' to='/operator/add-trucks'>here</Link> to add your trucks</OperatorText>
           
 
 
 
-      </Body>
-    </>
-    )
-  }
+  //     </Body>
+  //   </>
+  //   )
+  // }
 
   
   return (
