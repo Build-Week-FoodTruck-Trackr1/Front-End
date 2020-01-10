@@ -6,8 +6,8 @@ import './App.css';
 import FoodTruckForm from './components/Operator/FoodTruckForm';
 import OperatorDashboard from './components/Operator/OperatorDashboard'
 import Header from './components/headers/Header'
-import SignupPage from './login/SignupPage'
-import LoginPage from './login/LoginPage'
+import SignupPage from './components/login/SignupPage'
+import LoginPage from './components/login/LoginPage'
 import TestDiner from './components/User/testdiner';
 
 function App() {

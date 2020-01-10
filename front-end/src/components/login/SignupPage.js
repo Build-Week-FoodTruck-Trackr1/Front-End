@@ -1,7 +1,7 @@
 import React from 'react'
-import { MainPageContainer } from '../styled-components'
+import { MainPageContainer } from '../../styled-components'
 import SignupForm from './SignupForm'
-import Header from '../components/headers/Header'
+import Header from '../headers/Header'
 
 const SignupPage = () => {
     return(
