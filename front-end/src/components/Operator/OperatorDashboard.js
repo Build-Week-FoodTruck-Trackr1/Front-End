@@ -9,11 +9,15 @@ import OperatorHeader from '../headers/OperatorHeader'
 
 
 const Body = styled.div`
+height: 100vh;
 background: #ECA564;
 height: 100vh;
 `;
 
 const MyH2 = styled.h2`
+color: #232429; 
+font-family: Nunito Sans
+font-weight: Extra Bold  
 color: #e2e25a; 
 font-family: 'Droid serif', serif; 
 font-size: 3.6rem; 
@@ -25,6 +29,9 @@ margin: 0 0 12px;
 
 `;
 const MyH3 = styled.h3`
+color: #232429; 
+font-family: Nunito Sans
+font-weight: Extra Bold
 color: #e2e25a; 
 font-family: 'Droid serif', serif; 
 font-size: 3.6rem; 
