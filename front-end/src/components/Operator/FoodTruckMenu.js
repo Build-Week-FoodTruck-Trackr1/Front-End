@@ -1,15 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from 'react-redux'
+import axiosWithAuth from '../axiosWithAuth'
 import styled from "styled-components";
 
-export default function FoodTruckMenu(props) {
+ function FoodTruckMenu(props) {
+  const id = props.match.params.id
+  const singleTruck = props.trucks.filter(t => t.id == id)
+  const truck = singleTruck[0];
+
+  const [menu, setMenu] = useState()
+
+  useEffect(() => {
+    axiosWithAuth()
+        .post('/trucks/menu', {
+            name: truck.name
+        })
+        .then(res => {
+            setMenu(res.data)
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
+  }, [])
+
   return (
     <div>
-      <img src={props.truck.imgUrl} />
+      <img src={truck.imgUrl} />
 
-      <div>Truck #: {props.truck.id}</div>
-      <div>Truck Name: {props.truck.name}</div>
-      <div>CuisineType: {props.truck.cuisineType}</div>
-      <div>Customer Rating Average: {props.truck.customerRatingAvg} </div>
+      <div>Truck #: {truck.id}</div>
+      <div>Truck Name: {truck.name}</div>
+      <div>CuisineType: {truck.cuisineType}</div>
+      <div>Customer Rating Average: {truck.customerRatingAvg} </div>
 
       <h2>Menu Items</h2>
 
@@ -19,3 +40,14 @@ export default function FoodTruckMenu(props) {
     </div>
   );
 }
+
+const mapStateToProps = state => {
+  return{
+      trucks: state.operator.trucks
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  {}
+)(FoodTruckMenu)
