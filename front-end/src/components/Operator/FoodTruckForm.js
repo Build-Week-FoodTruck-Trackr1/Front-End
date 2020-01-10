@@ -5,21 +5,25 @@ import { addTruck } from "../../actions";
 import OperatorHeader from "../headers/OperatorHeader";
 
 const FormLabel = styled.label`
-  display: flex;
-  justify-content: center;
-  flex-direction:column
+ 
   font-size:25px;
   margin: 10px;
   font-family: Nunito Sans
   font-weight: Extra Bold
   color: #232429;
 `;
+const FormSpacing = styled.form`
+display: flex;
+
+flex-direction:column;
+  
+`;
 
 const FormContainer = styled.div`
   width: 100vw;
   height: 100vh;
   background: #eca564;
-  color: #fff;
+
   display: flex;
   justify-content: center;
   
@@ -29,7 +33,7 @@ const InputStyle = styled.input`
   max-width: 450px;
   background: #F8F6EE;
   padding: 10px;
-  margin: 50px auto;
+  margin: 10px auto;
   box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
   border-radius: 10px;
   border: 6px solid #232429;
@@ -60,7 +64,7 @@ const TruckButton = styled.button`
   font-family: Arial;
   font-size: 15px;
   font-weight: bold;
-  padding: 20px;
+  padding: 10px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #ded17c;
 `;
@@ -86,7 +90,7 @@ const FoodTruckForm = props => {
     <>
       <OperatorHeader />
       <FormContainer>
-        <form onSubmit={submitForm}>
+        <FormSpacing onSubmit={submitForm}>
           <FormLabel htmlFor="truckname">Food Truck Name</FormLabel>
           <InputStyle
             id="truckname"
@@ -107,7 +111,7 @@ const FoodTruckForm = props => {
           />
 
           <TruckButton type="submit">Add Food Truck</TruckButton>
-        </form>
+        </FormSpacing>
       </FormContainer>
     </>
   );
