@@ -27,7 +27,6 @@ font-style: italic;
 line-height: 4.4rem;  
 text-align: center;
 margin: 0 0 12px;
-
 `;
 const MyH3 = styled.h3`
 color: #232429; 
@@ -131,5 +130,4 @@ export default connect(
   mapStateToProps,
   {fetchTrucks}
 )(OperatorDashboard)
-
 

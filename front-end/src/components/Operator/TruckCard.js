@@ -35,7 +35,6 @@ const CardButton = styled.div`
   align-items: center;
   justify-content: center;
   color: #fff;
-
   &:hover {
     cursor: pointer;
   }
