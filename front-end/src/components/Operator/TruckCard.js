@@ -10,7 +10,7 @@ const CardImg = styled.img`
 const CardInfo = styled.div`
     tex-align: left;
     font-family: Nunito Sans
-font-weight: Extra Bold
+    font-weight: Extra Bold
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -31,14 +31,15 @@ const Card = styled.div`
 
 export default function TruckCard(props) {
   return (
-    <div className="character-card">
+    <div>
       <Card>
         <CardImg src={props.truck.imgUrl} />
 
         <CardInfo>
-          <div>ID#: {props.truck.id}</div>
+          <div>Truck #: {props.truck.id}</div>
           <div>Truck Name: {props.truck.name}</div>
           <div>CuisineType: {props.truck.cuisineType}</div>
+          <div>Customer Rating Average: {props.truck.customerRatingAvg} </div>
         </CardInfo>
       </Card>
     </div>
