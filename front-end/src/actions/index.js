@@ -9,6 +9,8 @@ export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAIL = 'USER_LOGIN_FAIL'
 export const OPERATOR_ADD_TRUCKS_SUCCESS = 'OPERATOR_ADD_TRUCKS_SUCCESS'
 export const OPERATOR_ADD_TRUCKS_FAIL = 'OPERATOR_ADD_TRUCKS_FAIL'
+export const FETCH_TRUCKS_FAIL = 'FETCH_TRUCKS_FAIL'
+export const FETCH_TRUCKS_SUCCESS = 'FETCH_TRUCKS_SUCCESS'
 
 export const userRegister = (user) => dispath => {
 
@@ -84,4 +86,31 @@ export const addTruck = truck => dispatch => {
             dispatch({type: OPERATOR_ADD_TRUCKS_FAIL, payload: err.message})
         })
         
+}
+
+export const fetchTrucks = url => dispatch => {
+    
+    axiosWithAuth()
+        .get(url)
+        .then(res => {
+            console.log()
+            dispatch({type: FETCH_TRUCKS_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+           console.log(err)
+        })
+}
+
+export const fetchMenu = truck => dispatch => {
+    
+    axiosWithAuth()
+        .post('/trucks/menu', {
+            name: truck.name
+        })
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err.message)
+        })
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 import styled from "styled-components";
 
 const CardImg = styled.img`
@@ -29,18 +30,29 @@ const Card = styled.div`
   border: solid 2px #232429;
 `;
 
+const CardButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  &:hover {
+    cursor: pointer;
+  }
+`
+
 export default function TruckCard(props) {
   return (
-    <div>
+    <div className="character-card">
       <Card>
         <CardImg src={props.truck.imgUrl} />
 
         <CardInfo>
-          <div>Truck #: {props.truck.id}</div>
+          <div>ID#: {props.truck.id}</div>
           <div>Truck Name: {props.truck.name}</div>
           <div>CuisineType: {props.truck.cuisineType}</div>
-          <div>Customer Rating Average: {props.truck.customerRatingAvg} </div>
         </CardInfo>
+        <Link to={`/operator/${props.truck.id}`}>Menu</Link>
+        <CardButton>Delete</CardButton>
       </Card>
     </div>
   );
