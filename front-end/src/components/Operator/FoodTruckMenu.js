@@ -23,6 +23,8 @@ import styled from "styled-components";
         })
   }, [])
 
+  console.log(menu)
+
   return (
     <div>
       <img src={truck.imgUrl} />

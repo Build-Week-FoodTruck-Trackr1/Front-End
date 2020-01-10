@@ -93,7 +93,7 @@ export const fetchTrucks = url => dispatch => {
     axiosWithAuth()
         .get(url)
         .then(res => {
-            console.log()
+            console.log(res.data)
             dispatch({type: FETCH_TRUCKS_SUCCESS, payload: res.data})
         })
         .catch(err => {
@@ -101,16 +101,27 @@ export const fetchTrucks = url => dispatch => {
         })
 }
 
-export const fetchMenu = truck => dispatch => {
-    
+export const deleteTruck = truck => dispatch => {
+    //functionality not working getting 500 error
     axiosWithAuth()
-        .post('/trucks/menu', {
-            name: truck.name
+        .delete('/trucks', {
+            name: truck.name,
+            operator_id: truck.operator_id
         })
         .then(res => {
             console.log(res)
         })
         .catch(err => {
             console.log(err.message)
+        })
+    
+    axiosWithAuth()
+        .get('/trucks/owned')
+        .then(res => {
+            console.log()
+            dispatch({type: FETCH_TRUCKS_SUCCESS, payload: res.data})
+        })
+        .catch(err => {
+            console.log(err)
         })
 }

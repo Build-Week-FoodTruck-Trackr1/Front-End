@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { deleteTruck } from '../../actions'
+import FormModal from './FormModal'
 import styled from "styled-components";
 
 const CardImg = styled.img`
@@ -40,7 +43,11 @@ const CardButton = styled.div`
   }
 `
 
-export default function TruckCard(props) {
+function TruckCard(props) {
+
+  const deleteTruck = () => {
+    props.deleteTruck(props.truck)
+  }
   return (
     <div className="character-card">
       <Card>
@@ -52,8 +59,14 @@ export default function TruckCard(props) {
           <div>CuisineType: {props.truck.cuisineType}</div>
         </CardInfo>
         <Link to={`/operator/${props.truck.id}`}>Menu</Link>
-        <CardButton>Delete</CardButton>
+        <CardButton onClick={deleteTruck}>Delete</CardButton>
+        <FormModal truck={props.truck} />
       </Card>
     </div>
   );
 }
+
+export default connect(
+  null,
+  {deleteTruck}
+)(TruckCard)
