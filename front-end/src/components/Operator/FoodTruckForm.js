@@ -6,7 +6,8 @@ import OperatorHeader from '../headers/OperatorHeader'
 
 
 const FormContainer = styled.div`
-  width: 460px;
+  width: 100vw;
+  height: 100vh;
   background: #eca564;
   color: #fff;
   display: flex;
@@ -41,7 +42,7 @@ const FoodTruckForm = props => {
 
   const submitForm = event => {
     event.preventDefault();
-    props.add(truck)
+    props.addTruck(truck)
     setTruck({ truckname: "", cuisineType: "", menuitems: "" });
   };
   return (

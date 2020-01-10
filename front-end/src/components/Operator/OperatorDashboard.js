@@ -6,26 +6,29 @@ import OperatorHeader from '../headers/OperatorHeader'
 
 
 const Body = styled.div`
+height: 100vh;
 background: #ECA564;
 `;
 
 const MyH2 = styled.h2`
-color: #e2e25a; 
-font-family: 'Droid serif', serif; 
+color: #232429; 
+font-family: Nunito Sans
+font-weight: Extra Bold
 font-size: 36px; 
-font-weight: 400; 
-font-style: italic; 
+ 
+
 line-height: 44px;  
 text-align: center;
 margin: 0 0 12px;
 
 `;
 const MyH3 = styled.h3`
-color: #e2e25a; 
-font-family: 'Droid serif', serif; 
+color: #232429; 
+font-family: Nunito Sans
+font-weight: Extra Bold
 font-size: 36px; 
-font-weight: 400; 
-font-style: italic; 
+
+
 line-height: 44px; 
 text-align: center;
 margin 0 0 12px;
