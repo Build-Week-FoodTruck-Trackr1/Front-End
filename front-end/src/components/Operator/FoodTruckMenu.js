@@ -4,6 +4,33 @@ import axiosWithAuth from '../axiosWithAuth'
 import styled from "styled-components";
 import MenuModal from './MenuModal'
 
+const CardImg = styled.img`
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+ 
+`;
+
+const MenuText = styled.p`
+  text-align:center;
+ 
+`;
+const MenuH2 = styled.h2`
+  text-align:center;
+ 
+`;
+
+
+const Body = styled.div`
+heigth: 100%;
+background: #ECA564;
+padding: 10px;
+display:flex;
+justify-content:center;
+flex-direction:column;
+`;
+
  function FoodTruckMenu(props) {
   const id = props.match.params.id
   const singleTruck = props.trucks.filter(t => t.id == id)
@@ -27,27 +54,27 @@ import MenuModal from './MenuModal'
   console.log(menu)
 
   return (
-    <div>
-      <img src={truck.imgUrl} />
+    <Body>
+      <CardImg src={truck.imgUrl} />
 
-      <div>Truck #: {truck.id}</div>
-      <div>Truck Name: {truck.name}</div>
-      <div>CuisineType: {truck.cuisineType}</div>
-      <div>Customer Rating Average: {truck.customerRatingAvg} </div>
+      <MenuText>Truck #: {truck.id}</MenuText>
+      <MenuText>Truck Name: {truck.name}</MenuText>
+      <MenuText>CuisineType: {truck.cuisineType}</MenuText>
+      <MenuText>Customer Rating Average: {truck.customerRatingAvg} </MenuText>
 
       <MenuModal id={id} setMenu={setMenu} name={truck.name} />
 
-      <h2>Menu Items</h2>
+      <MenuH2>Menu Items</MenuH2>
 
       {menu && menu.map(item => { 
           return(
               <div>
-         <p>Item Name: {item.itemName} </p>
-          <p>Item Descrition: {item.itemDescription}</p>
-          <p>Item Price: {item.itemPrice}</p>
+         <MenuText>Item Name: {item.itemName} </MenuText>
+          <MenuText>Item Descrition: {item.itemDescription}</MenuText>
+          <MenuText>Item Price: {item.itemPrice}</MenuText>
           </div>
       )})}
-    </div>
+    </Body>
   );
 }
 
