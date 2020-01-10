@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import TruckCard from "./TruckCard"
 import OperatorHeader from '../headers/OperatorHeader'
+import { fetchTrucks } from "../../actions";
 
 
 const Body = styled.div`
@@ -55,16 +56,11 @@ margin 0 0 12px;
 
 const OperatorDashboard = props => {
 
-  const [trucks , setTrucks] = useState([]);
+  // const [trucks , setTrucks] = useState([]);
 
 
   useEffect(() => {
-    axiosWithAuth()
-      .get("/trucks/owned")
-      .then(response => {
-        console.log(response.data);
-        setTrucks(response.data);
-      });
+    props.fetchTrucks('/trucks/owned');
   }, []);
 
   if(props.isLoading) {
@@ -82,7 +78,7 @@ const OperatorDashboard = props => {
     )
   }
 
-  else if(trucks.length === 0) {
+  else if(props.operator.trucks.length === 0) {
     return(
       <>
       <OperatorHeader />
@@ -112,7 +108,7 @@ const OperatorDashboard = props => {
 
         <MyH3> Your Trucks: </MyH3>
     
-        {trucks && trucks.map(truck => { 
+        {props.operator.trucks && props.operator.trucks.map(truck => { 
           return <TruckCard key={truck.id} truck={truck}/>
         })}
           
@@ -133,7 +129,7 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {}
+  {fetchTrucks}
 )(OperatorDashboard)
 
 

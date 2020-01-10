@@ -5,7 +5,9 @@ import { USER_REGISTER_START,
         USER_LOGIN_SUCCESS,
         OPERATOR_ADD_TRUCKS_SUCCESS,
         OPERATOR_ADD_TRUCKS_FAIL,
-        USER_LOGIN_FAIL
+        USER_LOGIN_FAIL,
+        FETCH_TRUCKS_SUCCESS,
+        FETCH_TRUCKS_FAIL
 } from '../actions'
 
 
@@ -13,7 +15,9 @@ import { USER_REGISTER_START,
 export let intitialState = {
     diner: {}, 
 
-    operator: {},
+    operator: {
+        trucks: []
+    },
 
     options: [
         { key: 'd', text: 'Diner', value: 'diner' },
@@ -52,6 +56,7 @@ export const reducer = (state = intitialState, action) => {
             {
                 ...state,
                 operator: {
+                    ...state.operator,
                     ...action.payload,
                 },
                 isLoading: false,
@@ -71,7 +76,10 @@ export const reducer = (state = intitialState, action) => {
             :
             {
                 ...state,
-                operator: action.payload,
+                operator: {
+                    ...state.operator,
+                    ...action.payload
+                },
                 isLoading: false,
                 error: ''
             }
@@ -105,6 +113,22 @@ export const reducer = (state = intitialState, action) => {
                     message: action.payload
                 },
                 isLoading: false,
+            }
+        case FETCH_TRUCKS_SUCCESS:
+            return{
+                ...state,
+                operator: {
+                    ...state.operator,
+                    trucks: action.payload
+                }
+            }
+        case FETCH_TRUCKS_FAIL:
+            return{
+                ...state,
+                operator: {
+                    ...state.operator,
+                    message: action.payload
+                }
             }
         default: 
             return state
