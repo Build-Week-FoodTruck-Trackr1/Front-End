@@ -13,10 +13,9 @@ const FormLabel = styled.label`
   color: #232429;
 `;
 const FormSpacing = styled.form`
-display: flex;
+  display: flex;
 
-flex-direction:column;
-  
+  flex-direction: column;
 `;
 
 const FormContainer = styled.div`
@@ -26,12 +25,11 @@ const FormContainer = styled.div`
 
   display: flex;
   justify-content: center;
-  
 `;
 const InputStyle = styled.input`
   color: #6fb03e;
   max-width: 450px;
-  background: #F8F6EE;
+  background: #f8f6ee;
   padding: 10px;
   margin: 10px auto;
   box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
@@ -51,8 +49,6 @@ const TextArea = styled.textarea`
 `;
 
 const TruckButton = styled.button`
-
-  
   background: linear-gradient(to bottom, #f0c911 5%, #f2ab1e 100%);
   background-color: #f0c911;
   border-radius: 6px;
