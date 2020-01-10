@@ -27,7 +27,7 @@ export const Navigation = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
-    width: 20%;
+    width: 30%;
 `
 
 export const NavLinks = styled.a`
@@ -36,6 +36,7 @@ export const NavLinks = styled.a`
     font-size: 1.8rem;
     &:hover{
         color: #000;
+        cursor: pointer;
     }
 `
 

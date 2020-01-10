@@ -51,7 +51,9 @@ export const reducer = (state = intitialState, action) => {
             } :
             {
                 ...state,
-                operator: action.payload,
+                operator: {
+                    ...action.payload,
+                },
                 isLoading: false,
                 error: ''
             }
