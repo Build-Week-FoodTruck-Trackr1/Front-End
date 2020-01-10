@@ -36,9 +36,14 @@ import styled from "styled-components";
 
       <h2>Menu Items</h2>
 
-      <div> itemName: Burrito</div>
-      <div>itemDescription: </div>
-      <div>itemPrice: $5.99</div>
+      {menu && menu.map(item => { 
+          return(
+              <div>
+         <p>Item Name: {item.itemName} </p>
+          <p>Item Descrition: {item.itemDescription}</p>
+          <p>Item Price: {item.itemPrice}</p>
+          </div>
+      )})}
     </div>
   );
 }
