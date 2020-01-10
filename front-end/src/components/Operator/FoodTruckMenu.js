@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from 'react-redux'
 import axiosWithAuth from '../axiosWithAuth'
 import styled from "styled-components";
+import MenuModal from './MenuModal'
 
  function FoodTruckMenu(props) {
   const id = props.match.params.id
@@ -33,6 +34,8 @@ import styled from "styled-components";
       <div>Truck Name: {truck.name}</div>
       <div>CuisineType: {truck.cuisineType}</div>
       <div>Customer Rating Average: {truck.customerRatingAvg} </div>
+
+      <MenuModal id={id} setMenu={setMenu} name={truck.name} />
 
       <h2>Menu Items</h2>
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { deleteTruck } from '../../actions'
-import FormModal from './FormModal'
+import TruckModal from './TruckModal'
 import styled from "styled-components";
 
 const CardImg = styled.img`
@@ -40,7 +40,15 @@ const CardButton = styled.div`
   color: #fff;
   &:hover {
     cursor: pointer;
+    color: #000;
   }
+`
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  padding 0 1%;
 `
 
 function TruckCard(props) {
@@ -57,10 +65,12 @@ function TruckCard(props) {
           <div>ID#: {props.truck.id}</div>
           <div>Truck Name: {props.truck.name}</div>
           <div>CuisineType: {props.truck.cuisineType}</div>
+          <ButtonContainer>
+            <Link className='menu-link' to={`/operator/${props.truck.id}`}>Menu</Link>
+            <CardButton onClick={deleteTruck}>Delete</CardButton>
+            <TruckModal truck={props.truck} />
+          </ButtonContainer>
         </CardInfo>
-        <Link to={`/operator/${props.truck.id}`}>Menu</Link>
-        <CardButton onClick={deleteTruck}>Delete</CardButton>
-        <FormModal truck={props.truck} />
       </Card>
     </div>
   );
