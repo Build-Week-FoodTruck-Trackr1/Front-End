@@ -170,7 +170,6 @@ flex-direction:column;
 `;
 
 export const OperatorBody = styled.div`
-height: 100vh;
 background: #ECA564;
 padding: 10px;
 `;
