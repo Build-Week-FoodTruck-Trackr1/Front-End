@@ -81,3 +81,180 @@ export const MainPageContainer = styled.div`
     background-position: center;
     background-repeat: no-repeat;
 `
+
+export const FormLabel = styled.label`
+ 
+  font-size:25px;
+  margin: 10px;
+  font-family: Nunito Sans
+  font-weight: Extra Bold
+  color: #232429;
+`;
+export const FormSpacing = styled.form`
+  display: flex;
+
+  flex-direction: column;
+`;
+
+export const TruckFormContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: #eca564;
+
+  display: flex;
+  justify-content: center;
+`;
+export const InputStyle = styled.input`
+  color: #6fb03e;
+  max-width: 450px;
+  background: #f8f6ee;
+  padding: 10px;
+  margin: 10px auto;
+  box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  border: 6px solid #232429;
+`;
+export const TextArea = styled.textarea`
+
+  color: #6fb03e
+  max-width: 450px;
+	background: #F8F6EE;
+	padding: 10px;
+	margin: 5px ;
+	box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+	border-radius: 10px;
+	border: 6px solid #232429;
+`;
+
+export const TruckButton = styled.button`
+  background: linear-gradient(to bottom, #f0c911 5%, #f2ab1e 100%);
+  background-color: #f0c911;
+  border-radius: 6px;
+  border: 1px solid #232429;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  color: #c92200;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ded17c;
+`;
+
+export const CardImg = styled.img`
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+ 
+`;
+
+export const MenuText = styled.p`
+  text-align:center;
+ 
+`;
+export const MenuH2 = styled.h2`
+  text-align:center;
+ 
+`;
+
+export const Body = styled.div`
+height: 100vh;
+background: #ECA564;
+padding: 10px;
+display:flex;
+justify-content:center;
+flex-direction:column;
+`;
+
+export const OperatorBody = styled.div`
+height: 100vh;
+background: #ECA564;
+padding: 10px;
+`;
+
+export const MyH2 = styled.h2`
+color: #232429; 
+font-family: Nunito Sans
+font-weight: Extra Bold  
+color: #e2e25a; 
+font-family: 'Droid serif', serif; 
+font-size: 3.6rem; 
+font-weight: 400; 
+font-style: italic; 
+line-height: 4.4rem;  
+text-align: center;
+margin: 0 0 12px;
+`;
+export const MyH3 = styled.h3`
+color: #232429; 
+font-family: Nunito Sans
+font-weight: Extra Bold
+color: #e2e25a; 
+font-family: 'Droid serif', serif; 
+font-size: 3.6rem; 
+font-weight: 400; 
+font-style: italic; 
+line-height: 4.4rem; 
+text-align: center;
+margin 0 0 12px;
+`;
+
+export const OperatorText = styled.p`
+color: #fff; 
+font-family: 'Droid serif', serif; 
+font-size: 2.4rem; 
+font-weight: 400; 
+font-style: italic; 
+line-height: 4.4rem; 
+text-align: center;
+margin 0 0 12px;
+`;
+
+export const TruckCardImg = styled.img`
+  width: 200px;
+  height: 200px;
+  padding: 5px;
+`;
+
+export const CardInfo = styled.div`
+    tex-align: left;
+    font-family: Nunito Sans
+    font-weight: Extra Bold
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50%;
+    color: #232429;
+`;
+
+export const Card = styled.div`
+  width: 50vw;
+  padding: 10px;
+  box-shadow: 1px 1px 5px black;
+  border-radius: 10px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  border: solid 2px #232429;
+`;
+
+export const CardButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  &:hover {
+    cursor: pointer;
+    color: #000;
+  }
+`
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  padding 0 1%;
+`

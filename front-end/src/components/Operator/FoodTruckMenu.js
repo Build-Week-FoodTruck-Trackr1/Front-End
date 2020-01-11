@@ -1,39 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { CardImg, MenuText, MenuH2, Body } from '../../styled-components'
 import { connect } from 'react-redux'
 import axiosWithAuth from '../axiosWithAuth'
-import styled from "styled-components";
 import MenuModal from './MenuModal'
 
-const CardImg = styled.img`
-display: block;
-margin-left: auto;
-margin-right: auto;
-width: 50%;
- 
-`;
-
-const MenuText = styled.p`
-  text-align:center;
- 
-`;
-const MenuH2 = styled.h2`
-  text-align:center;
- 
-`;
-
-
-const Body = styled.div`
-heigth: 100%;
-background: #ECA564;
-padding: 10px;
-display:flex;
-justify-content:center;
-flex-direction:column;
-`;
-
- function FoodTruckMenu(props) {
+function FoodTruckMenu(props) {
   const id = props.match.params.id
-  const singleTruck = props.trucks.filter(t => t.id == id)
+  const singleTruck = props.trucks.filter(t => t.id === id)
   const truck = singleTruck[0];
 
   const [menu, setMenu] = useState()

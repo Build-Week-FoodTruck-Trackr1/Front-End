@@ -68,3 +68,9 @@
   color: red;
   font-weight: bolder;
 }
+
+.success{
+  font-size: 1.2rem;
+  color: 	#228B22;
+  font-weight: bolder;
+}
