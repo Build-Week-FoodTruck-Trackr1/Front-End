@@ -16,7 +16,6 @@ const DinerHeader = () => {
                 <Logo src='https://github.com/agyin3/images/blob/master/food-truck-trackr/logo.png?raw=true' />
             </NavLinks>
             <Navigation>
-                <NavLinks href='https://heuristic-swanson-2ca27f.netlify.com/'>Home</NavLinks>
                 <NavLinks href='/diner/dashboard'>Dashboard</NavLinks>
                 <NavLinks href='/diner/trucks'>Trucks</NavLinks>
                 <NavLinks onClick={signOut}>Sign Out</NavLinks>

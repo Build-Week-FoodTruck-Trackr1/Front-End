@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import styled from "styled-components";
 import { FormLabel, FormSpacing, TruckFormContainer, InputStyle, TextArea, TruckButton } from '../../styled-components'
 import { addTruck } from "../../actions";
 import OperatorHeader from "../headers/OperatorHeader";
-import { MessageHeader } from "semantic-ui-react";
 
 const FoodTruckForm = props => {
   const [truck, setTruck] = useState({
@@ -13,7 +11,7 @@ const FoodTruckForm = props => {
     menuitems: ""
   });
 
-  const [message, setMessage] = useState({})
+  const [message, setMessage] = useState({error: '', success: ''})
 
   const handleChanges = event => {
     setTruck({ ...truck, [event.target.name]: event.target.value });
