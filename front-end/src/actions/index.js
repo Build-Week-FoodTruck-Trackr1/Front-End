@@ -1,5 +1,6 @@
 import axiosWithAuth from '../components/axiosWithAuth'
 import history from '../components/history'
+import axios from 'axios'
 
 export const USER_REGISTER_START = 'USER_RREGISTER_START'
 export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS'
@@ -13,6 +14,8 @@ export const OPERATOR_ADD_TRUCKS_SUCCESS = 'OPERATOR_ADD_TRUCKS_SUCCESS'
 export const OPERATOR_ADD_TRUCKS_FAIL = 'OPERATOR_ADD_TRUCKS_FAIL'
 export const FETCH_TRUCKS_FAIL = 'FETCH_TRUCKS_FAIL'
 export const FETCH_TRUCKS_SUCCESS = 'FETCH_TRUCKS_SUCCESS'
+export const YELP_FETCH_SUCCESS = 'YELP_FETCH_SUCCESS'
+export const YELP_FETCH_FAIL = 'YELP_FETCH_FAIL'
 
 export const userRegister = (user) => dispath => {
 
@@ -127,4 +130,26 @@ export const deleteTruck = truck => dispatch => {
         .catch(err => {
             console.log(err)
         })
+}
+
+export const getYelpTrucks = (url, location) => dispatch => {
+        axios({
+            method: 'get',
+            url: url,
+            params: {
+                term: 'food truck',
+                location: location
+            }, 
+            headers: {
+                Authorization: 'Bearer qEmilugNtBUc4FfGwgw9LNIpEsBg3etrfOkN09IhKPOJAI21ktTdEPNLPhz8JO6vk49uj7az7rkPV3zp4pGiuUGfFNdkn0XCeBlxzxc5WSeP75FQy9cryEVKz6cXXnYx'
+            }
+        })
+            .then(res => {
+                console.log(res)
+                dispatch({type: YELP_FETCH_SUCCESS, payload: res.data.businesses})
+            })
+            .catch(err => {
+                console.log(err)
+                dispatch({type: YELP_FETCH_FAIL, payload: err.message})
+            })
 }

@@ -27,7 +27,7 @@ export const Navigation = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: space-around;
-    width: 30%;
+    width: 40%;
 `
 
 export const NavLinks = styled.a`
@@ -161,6 +161,14 @@ export const MenuH2 = styled.h2`
 `;
 
 export const Body = styled.div`
+background: #ECA564;
+padding: 10px;
+display:flex;
+justify-content:center;
+flex-direction:column;
+`;
+
+export const DinerBody = styled.div`
 height: 100vh;
 background: #ECA564;
 padding: 10px;
