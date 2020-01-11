@@ -9,17 +9,23 @@ import { USER_REGISTER_START,
     FETCH_TRUCKS_SUCCESS,
     FETCH_TRUCKS_FAIL,
     ADD_TRUCKS_SUCCESS,
-    ADD_TRUCKS_FAIL
+    ADD_TRUCKS_FAIL,
+    YELP_FETCH_SUCCESS,
+    YELP_FETCH_FAIL
 } from '../actions'
 
 
 
 export let intitialState = {
-diner: {}, 
+diner: {
+    favoriteTrucks: []
+}, 
 
 operator: {
     trucks: []
 },
+
+foodTrucks: [],
 
 options: [
     { key: 'd', text: 'Diner', value: 'diner' },
@@ -49,8 +55,8 @@ switch(action.type) {
         {
             ...state,
             diner: {
-                ...action.payload.newUser,
-                message: action.payload.message
+                ...action.payload,
+                ...state.diner
             },
             isLoading: false,
             error: ''
@@ -143,6 +149,15 @@ switch(action.type) {
                 ...state.operator,
                 message: action.payload
             }
+        }
+    case YELP_FETCH_SUCCESS:
+        return{
+            ...state,
+            foodTrucks: [...action.payload]
+        }
+    case YELP_FETCH_FAIL:
+        return{
+            ...state
         }
     default: 
         return state

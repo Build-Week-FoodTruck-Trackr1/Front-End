@@ -24,11 +24,13 @@ export const OperatorHead = styled.div`
 `;
 
 export const Navigation = styled.div`
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
-  width: 30%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 40%;
+
 `;
+
 
 export const NavLinks = styled.a`
   color: #fff;
@@ -157,18 +159,25 @@ export const MenuH2 = styled.h2`
 `;
 
 export const Body = styled.div`
-  height: 100%;
-  background: #eca564;
-  margin: 0, auto;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+background: #ECA564;
+padding: 10px;
+display:flex;
+justify-content:center;
+flex-direction:column;
+`;
+
+export const DinerBody = styled.div`
+height: 100vh;
+background: #ECA564;
+padding: 10px;
+display:flex;
+justify-content:center;
+flex-direction:column;
 `;
 
 export const OperatorBody = styled.div`
-  background: #eca564;
-  padding: 10px;
+background: #ECA564;
+padding: 10px;
 `;
 
 export const MyH2 = styled.h2`

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import OperatorHeader from '../headers/OperatorHeader'
 import { CardImg, MenuText, MenuH2, Body } from '../../styled-components'
 import { connect } from 'react-redux'
 import axiosWithAuth from '../axiosWithAuth'
@@ -8,7 +9,7 @@ function FoodTruckMenu(props) {
   const id = props.match.params.id
   const singleTruck = props.trucks.filter(t => t.id == id)
   const truck = singleTruck[0];
-  console.log(id)
+
   const [menu, setMenu] = useState()
 
   useEffect(() => {
@@ -27,6 +28,8 @@ function FoodTruckMenu(props) {
   console.log(menu)
 
   return (
+    <>
+    <OperatorHeader />
     <Body>
       <CardImg src={truck.imgUrl} />
 
@@ -48,6 +51,7 @@ function FoodTruckMenu(props) {
           </div>
       )})}
     </Body>
+    </>
   );
 }
 
