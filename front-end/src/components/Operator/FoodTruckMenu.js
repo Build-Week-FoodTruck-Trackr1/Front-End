@@ -6,7 +6,7 @@ import MenuModal from './MenuModal'
 
 function FoodTruckMenu(props) {
   const id = props.match.params.id
-  const singleTruck = props.trucks.filter(t => t.id === id)
+  const singleTruck = props.trucks.filter(t => t.id == id)
   const truck = singleTruck[0];
 
   const [menu, setMenu] = useState()
