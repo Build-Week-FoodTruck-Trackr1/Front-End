@@ -1,69 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { FormLabel, FormSpacing, TruckFormContainer, InputStyle, TextArea, TruckButton } from '../../styled-components'
 import { addTruck } from "../../actions";
 import OperatorHeader from "../headers/OperatorHeader";
-
-const FormLabel = styled.label`
- 
-  font-size:25px;
-  margin: 10px;
-  font-family: Nunito Sans
-  font-weight: Extra Bold
-  color: #232429;
-`;
-const FormSpacing = styled.form`
-  display: flex;
-
-  flex-direction: column;
-`;
-
-const FormContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: #eca564;
-
-  display: flex;
-  justify-content: center;
-`;
-const InputStyle = styled.input`
-  color: #6fb03e;
-  max-width: 450px;
-  background: #f8f6ee;
-  padding: 10px;
-  margin: 10px auto;
-  box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
-  border-radius: 10px;
-  border: 6px solid #232429;
-`;
-const TextArea = styled.textarea`
-
-  color: #6fb03e
-  max-width: 450px;
-	background: #F8F6EE;
-	padding: 10px;
-	margin: 5px ;
-	box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
-	border-radius: 10px;
-	border: 6px solid #232429;
-`;
-
-const TruckButton = styled.button`
-  background: linear-gradient(to bottom, #f0c911 5%, #f2ab1e 100%);
-  background-color: #f0c911;
-  border-radius: 6px;
-  border: 1px solid #232429;
-  display: flex;
-  justify-content: center;
-  cursor: pointer;
-  color: #c92200;
-  font-family: Arial;
-  font-size: 15px;
-  font-weight: bold;
-  padding: 10px;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px #ded17c;
-`;
+import { MessageHeader } from "semantic-ui-react";
 
 const FoodTruckForm = props => {
   const [truck, setTruck] = useState({
@@ -72,6 +13,8 @@ const FoodTruckForm = props => {
     menuitems: ""
   });
 
+  const [message, setMessage] = useState({})
+
   const handleChanges = event => {
     setTruck({ ...truck, [event.target.name]: event.target.value });
   };
@@ -79,13 +22,16 @@ const FoodTruckForm = props => {
   const submitForm = event => {
     event.preventDefault();
     props.addTruck({ ...truck, id: props.operator.id });
+    setMessage({error: props.error, success: props.success})
     setTruck({ truckname: "", cuisineType: "" });
   };
+
+  console.log(message)
 
   return (
     <>
       <OperatorHeader />
-      <FormContainer>
+      <TruckFormContainer>
         <FormSpacing onSubmit={submitForm}>
           <FormLabel htmlFor="truckname">Food Truck Name</FormLabel>
           <InputStyle
@@ -107,8 +53,10 @@ const FoodTruckForm = props => {
           />
 
           <TruckButton type="submit">Add Food Truck</TruckButton>
+              <p class='success'>{message.success}</p>
+              <p className='error'>{message.error}</p>
         </FormSpacing>
-      </FormContainer>
+      </TruckFormContainer>
     </>
   );
 };
@@ -116,8 +64,12 @@ const FoodTruckForm = props => {
 const mapStateToProps = state => {
   return {
     operator: state.operator,
-    isLoading: state.isLoading
+    success: state.success,
+    error: state.error
   };
 };
 
-export default connect(mapStateToProps, { addTruck })(FoodTruckForm);
+export default connect(
+  mapStateToProps, 
+  { addTruck }
+)(FoodTruckForm);

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Form, Header } from 'semantic-ui-react'
-import { fetchTrucks } from '../../actions'
+import { fetchOperatorTrucks } from '../../actions'
 import axiosWithAuth from '../axiosWithAuth';
 import { connect } from 'react-redux';
 
@@ -30,7 +30,7 @@ export const TruckModal = (props) => {
             .catch(err => {
                 console.log(err)
             })
-            props.fetchTrucks('/trucks/owned')
+            props.fetchOperatorTrucks('/trucks/owned')
             close();
     }
 
@@ -86,5 +86,5 @@ export const TruckModal = (props) => {
 
 export default connect(
     null,
-    {fetchTrucks}
+    {fetchOperatorTrucks}
 )(TruckModal)

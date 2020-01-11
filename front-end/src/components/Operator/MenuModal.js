@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { MenuButton } from '../../styled-components'
 import { Modal, Form, Header } from 'semantic-ui-react'
-import { fetchTrucks } from '../../actions'
 import axiosWithAuth from '../axiosWithAuth';
-import { connect } from 'react-redux';
 
 export const MenuModal = ({ id, name, setMenu }) => {
     const [menuItem, setMenuItem] = useState({itemName: '', itemDescription: '', customerRatingAvg: '', itemPrice: ''})

@@ -7,7 +7,9 @@ import { USER_REGISTER_START,
     OPERATOR_ADD_TRUCKS_FAIL,
     USER_LOGIN_FAIL,
     FETCH_TRUCKS_SUCCESS,
-    FETCH_TRUCKS_FAIL
+    FETCH_TRUCKS_FAIL,
+    ADD_TRUCKS_SUCCESS,
+    ADD_TRUCKS_FAIL
 } from '../actions'
 
 
@@ -94,6 +96,18 @@ switch(action.type) {
             ...state,
             error: action.payload,
             isLoading: false
+        }
+    case ADD_TRUCKS_SUCCESS:
+        return{
+            ...state,
+            error: '',
+            success: action.payload
+        }
+    case ADD_TRUCKS_FAIL: 
+        return{
+            ...state,
+            success: '',
+            error: action.payload
         }
     case OPERATOR_ADD_TRUCKS_SUCCESS:
         return{

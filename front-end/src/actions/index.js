@@ -7,6 +7,8 @@ export const USER_REGISTER_FAIL = 'USER_REGISTER_FAIL'
 export const USER_LOGIN_START = 'USER_LOGIN_START'
 export const USER_LOGIN_SUCCESS = 'USER_LOGIN_SUCCESS'
 export const USER_LOGIN_FAIL = 'USER_LOGIN_FAIL'
+export const ADD_TRUCKS_SUCCESS = 'ADD_TRUCKS_SUCCESS'
+export const ADD_TRUCKS_FAIL = 'ADD_TRUCKS_FAIL'
 export const OPERATOR_ADD_TRUCKS_SUCCESS = 'OPERATOR_ADD_TRUCKS_SUCCESS'
 export const OPERATOR_ADD_TRUCKS_FAIL = 'OPERATOR_ADD_TRUCKS_FAIL'
 export const FETCH_TRUCKS_FAIL = 'FETCH_TRUCKS_FAIL'
@@ -72,9 +74,11 @@ export const addTruck = truck => dispatch => {
       })
       .then(res => {
         console.log(res)
+        dispatch({type: ADD_TRUCKS_SUCCESS, payload: 'Truck successfully added'})
       })
       .catch(err => {
         console.log(err.message)
+        dispatch({type: ADD_TRUCKS_FAIL, payload: 'There was an error adding your truck'})
       })
 
       axiosWithAuth()
@@ -88,7 +92,7 @@ export const addTruck = truck => dispatch => {
         
 }
 
-export const fetchTrucks = url => dispatch => {
+export const fetchOperatorTrucks = url => dispatch => {
     
     axiosWithAuth()
         .get(url)
@@ -105,8 +109,7 @@ export const deleteTruck = truck => dispatch => {
     //functionality not working getting 500 error
     axiosWithAuth()
         .delete('/trucks', {
-            name: truck.name,
-            operator_id: truck.operator_id
+            name: truck.name
         })
         .then(res => {
             console.log(res)

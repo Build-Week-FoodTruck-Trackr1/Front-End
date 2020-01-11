@@ -1,72 +1,22 @@
-import styled from "styled-components";
-import axiosWithAuth from "../axiosWithAuth";
-import React, { useEffect, useState } from "react";
-import { Segment, Dimmer, Loader, Image } from 'semantic-ui-react'
+import React, { useEffect } from "react";
+import { OperatorBody, MyH2, MyH3, OperatorText } from '../../styled-components'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import TruckCard from "./TruckCard"
 import OperatorHeader from '../headers/OperatorHeader'
-import { fetchTrucks } from "../../actions";
-
-
-const Body = styled.div`
-heigth: 100vh;
-background: #ECA564;
-padding: 10px;
-`;
-
-const MyH2 = styled.h2`
-color: #232429; 
-font-family: Nunito Sans
-font-weight: Extra Bold  
-color: #e2e25a; 
-font-family: 'Droid serif', serif; 
-font-size: 3.6rem; 
-font-weight: 400; 
-font-style: italic; 
-line-height: 4.4rem;  
-text-align: center;
-margin: 0 0 12px;
-`;
-const MyH3 = styled.h3`
-color: #232429; 
-font-family: Nunito Sans
-font-weight: Extra Bold
-color: #e2e25a; 
-font-family: 'Droid serif', serif; 
-font-size: 3.6rem; 
-font-weight: 400; 
-font-style: italic; 
-line-height: 4.4rem; 
-text-align: center;
-margin 0 0 12px;
-`;
-
-const OperatorText = styled.p`
-color: #fff; 
-font-family: 'Droid serif', serif; 
-font-size: 2.4rem; 
-font-weight: 400; 
-font-style: italic; 
-line-height: 4.4rem; 
-text-align: center;
-margin 0 0 12px;
-`;
+import { fetchOperatorTrucks } from "../../actions";
 
 const OperatorDashboard = props => {
 
-  // const [trucks , setTrucks] = useState([]);
-
-
   useEffect(() => {
-    props.fetchTrucks('/trucks/owned');
+    props.fetchOperatorTrucks('/trucks/owned');
   }, []);
 
   
   return (
     <>
       <OperatorHeader />
-      <Body>
+      <OperatorBody>
         <MyH2>{props.operator.message}</MyH2>
 
 
@@ -81,11 +31,8 @@ const OperatorDashboard = props => {
         {props.operator.trucks && props.operator.trucks.map(truck => { 
           return <TruckCard key={truck.id} truck={truck}/>
         })}
-          
 
-
-
-      </Body>
+      </OperatorBody>
     </>
   );
 }
@@ -99,6 +46,6 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  {fetchTrucks}
+  {fetchOperatorTrucks}
 )(OperatorDashboard)
 
