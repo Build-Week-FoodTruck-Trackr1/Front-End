@@ -3,6 +3,7 @@ import { Router, Switch, Route } from 'react-router-dom'
 import history from './components/history'
 import PrivateRoute from './components/PrivateRoute'
 import './App.css';
+import diner from "./components/User/diner"
 import FoodTruckForm from './components/Operator/FoodTruckForm';
 import DinerTruckMenu from './components/User/DinerTruckMenu'
 import OperatorDashboard from './components/Operator/OperatorDashboard'
@@ -18,7 +19,7 @@ function App() {
     <>
       <Router history={history}>
         <Switch>
-          <PrivateRoute exact path='/diner/dashboard' component={TestDiner} />
+          <PrivateRoute exact path='/diner/dashboard' component={diner} />
           <PrivateRoute exact path='/diner/trucks' component={TruckList} />
           <PrivateRoute exact path='/diner/trucks/:id' component={DinerTruckMenu} />
           <PrivateRoute exact path='/operator/dashboard' component={OperatorDashboard} />
@@ -30,7 +31,6 @@ function App() {
         </Switch>
       </Router>
     </>
-
   );
 }
 
