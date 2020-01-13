@@ -1,64 +1,17 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import axiosWithAuth from "../axiosWithAuth"
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { FormLabel, FormSpacing, TruckFormContainer, InputStyle, TextArea, TruckButton } from '../../styled-components'
+import { addTruck } from "../../actions";
+import OperatorHeader from "../headers/OperatorHeader";
 
-const FormContainer = styled.div`
-    width: 460px;
-    background: #ECA564;
-    color: #fff;
-    display:flex;
-    justify-content: center;
-    box-shadow: 0 5px #E68959;
-   
-`;
-const InputStyle = styled.input`
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color: #6fb03e
-  
-`;
-const TextArea = styled.textarea`
-  display:flex;
-  flex-direction:column
- 
-  color: #6fb03e
-  display: block;
-`;
-
-
-const FoodTruckForm = () => {
+const FoodTruckForm = props => {
   const [truck, setTruck] = useState({
     truckname: "",
     cuisineType: "",
     menuitems: ""
   });
 
-//   useEffect( ()=>{
-// axiosWithAuth().get ("/trucks")
-// .then(response =>{
-//   const foodTruck = response.data;
-//   setTruck(truck)
-// })
-// .catch(error => {
-// ?
-
-
-
-  // const addNewTruck = truck => {
-
-  //   const newTruck = {
-  //     id: Date.now(),
-  //     title: truck.title,
-  //     cuisineType: truck.cuisineType,
-  //     menuitems: truck.menuitems
-
-  // //   };
-
-  //   const newTruckCollection = [...truck, newTruck];
-
-  //   setTruck(newTruckCollection);
-  // };
+  const [message, setMessage] = useState({error: '', success: ''})
 
   const handleChanges = event => {
     setTruck({ ...truck, [event.target.name]: event.target.value });
@@ -66,44 +19,55 @@ const FoodTruckForm = () => {
 
   const submitForm = event => {
     event.preventDefault();
-
-    setTruck({ truckname: "", cuisineType: "", menuitems: "" });
+    props.addTruck({ ...truck, id: props.operator.id });
+    setMessage({error: props.error, success: props.success})
+    setTruck({ truckname: "", cuisineType: "" });
   };
 
- console.log("truck state", truck)
-  return (
-    <FormContainer>
-      <form onSubmit={submitForm}>
-        <label htmlFor="truckname">Food Truck Name</label>
-        <InputStyle
-          id="truckname"
-          type="text"
-          name="truckname"
-          placeholder="Enter a Truck Name"
-          onChange={handleChanges}
-          value={truck.truckname}
-        />
+  console.log(message)
 
-        <label htmlFor="cuisineType">Cuisine Type</label>
-        <TextArea
-          id="cuisineType"
-          name="cuisineType"
-          placeholder="Add cuisineType here"
-          onChange={handleChanges}
-          value={truck.cuisineType}
-        />
-        <label htmlFor="truck">Menu Items</label>
-        <TextArea
-          id="menuitems"
-          name="menuitems"
-          placeholder="Add Menu Items here"
-          onChange={handleChanges}
-          value={truck.menuitems}
-        />
-        <button type="submit">Add Food Truck</button>
-      </form>
-    </FormContainer>
+  return (
+    <>
+      <OperatorHeader />
+      <TruckFormContainer>
+        <FormSpacing onSubmit={submitForm}>
+          <FormLabel htmlFor="truckname">Food Truck Name</FormLabel>
+          <InputStyle
+            id="truckname"
+            type="text"
+            name="truckname"
+            placeholder="Enter a Truck Name"
+            onChange={handleChanges}
+            value={truck.truckname}
+          />
+
+          <FormLabel htmlFor="cuisineType">Cuisine Type</FormLabel>
+          <TextArea
+            id="cuisineType"
+            name="cuisineType"
+            placeholder="Add cuisineType here"
+            onChange={handleChanges}
+            value={truck.cuisineType}
+          />
+
+          <TruckButton type="submit">Add Food Truck</TruckButton>
+              <p class='success'>{message.success}</p>
+              <p className='error'>{message.error}</p>
+        </FormSpacing>
+      </TruckFormContainer>
+    </>
   );
 };
 
-export default FoodTruckForm;
+const mapStateToProps = state => {
+  return {
+    operator: state.operator,
+    success: state.success,
+    error: state.error
+  };
+};
+
+export default connect(
+  mapStateToProps, 
+  { addTruck }
+)(FoodTruckForm);

@@ -10,6 +10,10 @@ import * as serviceWorker from './serviceWorker';
 
 const store = createStore(reducer, applyMiddleware(thunk))
 
+store.subscribe(() => {
+    localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+})
+
 ReactDOM.render(
 <Provider store={store}>
     <App />

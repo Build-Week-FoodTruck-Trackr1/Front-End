@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { userRegister } from '../actions'
-import { FormContainer } from '../styled-components'
+import { userRegister } from '../../actions'
+import { FormContainer } from '../../styled-components'
 import { Form } from 'semantic-ui-react'
-import { useInput } from '../components/hooks/useInput'
+import { useInput } from '../hooks/useInput'
 
 const SignupForm = props => {
     
@@ -39,7 +39,7 @@ const SignupForm = props => {
     }
     return(
         <FormContainer>
-            <Form inverted>
+            <Form size='massive' inverted>
                     <Form.Select 
                     required
                     name='type'
@@ -75,14 +75,15 @@ const SignupForm = props => {
                     />
                     <Form.Input
                     required
-                    label='Current Location'
+                    label='Current City'
                     type='text'
                     value={currentLocation}
                     name='current'
                     onChange={e => handleCurrent(e.target.value)}  
                     />
+                    <p className='error'>{props.error}</p>
                     <Form.Group inline>
-                        <Form.Button onClick={userRegister}>Submit</Form.Button>
+                        <Form.Button size='massive' onClick={userRegister}>Submit</Form.Button>
                         <Link className='login-link' to='/login'>Login</Link>
                     </Form.Group>
             </Form>
@@ -92,7 +93,8 @@ const SignupForm = props => {
 
 const mapStateToProps = state => {
     return {
-        options: state.options
+        options: state.options,
+        error: state.error
     }
 }
 

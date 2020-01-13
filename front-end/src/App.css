@@ -39,7 +39,7 @@
 
 .login-link {
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 2rem;
   text-decoration: underline;
   font-family: Helvetica, sans-serif;
   font-weight: 200;
@@ -48,4 +48,29 @@
 .login-link:hover {
   color: #F7CE74;
   text-decoration: underline;
+}
+
+#operator-link:hover {
+  color: #000;
+}
+
+.menu-link {
+  color: #fff;
+}
+
+.menu-link:hover {
+  color: #000;
+  cursor: pointer;
+}
+
+.error{
+  font-size: 1.2rem;
+  color: red;
+  font-weight: bolder;
+}
+
+.success{
+  font-size: 1.2rem;
+  color: 	#228B22;
+  font-weight: bolder;
 }

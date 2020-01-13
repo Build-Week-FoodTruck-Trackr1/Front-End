@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Form } from 'semantic-ui-react'
-import { userLogin } from '../actions'
-import {useInput} from '../components/hooks/useInput'
-import { FormContainer } from '../styled-components';
+import { userLogin } from '../../actions'
+import {useInput} from '../hooks/useInput'
+import { FormContainer } from '../../styled-components';
 
 const LoginForm = props => {
 
@@ -26,7 +26,7 @@ const LoginForm = props => {
     }
     return(
         <FormContainer>
-            <Form inverted>
+            <Form size='massive' inverted>
                     <Form.Select 
                     required
                     name='type'
@@ -52,8 +52,9 @@ const LoginForm = props => {
                     name='password'
                     onChange={e => handlePassword(e.target.value)}  
                     />
+                    <p className='error'>{props.error}</p>
                      <Form.Group inline>
-                        <Form.Button onClick={userLogin}>Submit</Form.Button>
+                        <Form.Button size='massive' onClick={userLogin}>Submit</Form.Button>
                         <Link className='login-link' to='/register'>Register</Link>
                     </Form.Group>
             </Form>
@@ -63,7 +64,8 @@ const LoginForm = props => {
 
 const mapStateToProps = state => {
     return {
-        options: state.options
+        options: state.options,
+        error: state.error
     }
 }
 
