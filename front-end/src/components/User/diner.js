@@ -8,6 +8,7 @@ const Ft = styled.div`
     color: #fff;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     padding:5%;
     margin-left: 60px;
@@ -22,12 +23,14 @@ margin-top: 50px;`
 
 const Diner = () => {
     const [ truck, setTruck] = useState ([])
+    const [results, setResults]= useState([])
     const [ search, setSearch] = useState("")
 useEffect( ()=>{
     axiosWithAuth().get ("/trucks")
     .then(response => {
         console.log(response)
         setTruck(response.data);
+        setResults(response.data);
     })
     .catch(error => {
         console.log("Sorry, you've got an error", error)
@@ -38,26 +41,25 @@ const handleChange= event =>{
     console.log(event)
 }
 const handleSubmit= event =>{
+    event.preventDefault()
+    setResults(
     truck.filter( data =>
-    //  event.preventDefault()
-    // axiosWithAuth().get("/trucks")
-    //     .then(res => {
-    //         console.log(res.data);
-    //         setTruck(res.data)
-    data.cuisineType === search)
+    data.cuisineType.includes(search.toLowerCase())))
     
 }
 return(
     <div className = "foodtruck">
+        <form
+        onSubmit={handleSubmit}>
       <input
        name="search"
        placeholder= "Search"
        onChange={handleChange}
-       onSubmit={handleSubmit}
+      
        /> 
-       
+      </form> 
         <h1></h1>
-   {truck.map(data=> <Ft key={data.id}>
+   {results.map(data=> <Ft key={data.id}>
        <h1>{data.name}</h1>
        <Photo src= {data.imgUrl}></Photo>
        <h2>Cusine: {data.cuisineType}</h2>
